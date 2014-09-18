@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlderamServices", "AlderamServices\AlderamServices.csproj", "{0BCA8DE9-E9A0-43BD-BDDC-C855F8F929E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlderamServicesTests", "AlderamServices.Tests\AlderamServicesTests.csproj", "{48918483-041C-4720-A499-E2FD3A80227B}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite", "http://localhost:1308", "{D41E8EBB-C856-4E51-8382-E94D9677F9BE}"
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_1308"
+		Debug.AspNetCompiler.PhysicalPath = "WebSite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1308\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_1308"
+		Release.AspNetCompiler.PhysicalPath = "WebSite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1308\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "WebSite\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B0AB0BA0-A6A6-425E-841A-CCE894525F9A}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://alderam.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = AlderamServices.Tests\\AlderamServicesTests.csproj
+		SccProjectName1 = AlderamServices.Tests
+		SccLocalPath1 = AlderamServices.Tests
+		SccProjectUniqueName2 = AlderamServices\\AlderamServices.csproj
+		SccProjectName2 = AlderamServices
+		SccLocalPath2 = AlderamServices
+		SccWebProject3 = true
+		SccProjectUniqueName3 = http://localhost:1308
+		SccProjectName3 = WebSite
+		SccLocalPath3 = WebSite
+		SccProjectEnlistmentChoice3 = 2
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BCA8DE9-E9A0-43BD-BDDC-C855F8F929E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BCA8DE9-E9A0-43BD-BDDC-C855F8F929E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BCA8DE9-E9A0-43BD-BDDC-C855F8F929E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BCA8DE9-E9A0-43BD-BDDC-C855F8F929E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48918483-041C-4720-A499-E2FD3A80227B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48918483-041C-4720-A499-E2FD3A80227B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48918483-041C-4720-A499-E2FD3A80227B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48918483-041C-4720-A499-E2FD3A80227B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D41E8EBB-C856-4E51-8382-E94D9677F9BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41E8EBB-C856-4E51-8382-E94D9677F9BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D41E8EBB-C856-4E51-8382-E94D9677F9BE}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41E8EBB-C856-4E51-8382-E94D9677F9BE}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

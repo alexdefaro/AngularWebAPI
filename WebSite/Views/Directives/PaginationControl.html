@@ -1,0 +1,9 @@
+﻿<div ng-controller = "paginationController as paginationController" ng-init="paginationController.resetPaginator()"> 
+    <pagination direction-links = "true" previous-text="&lsaquo;" next-text="&rsaquo;"  
+                boundary-links  = "true" first-text="&laquo;"     last-text="&raquo;" 
+                total-items     = "paginationController.Options.numberOfRowsInResult"
+                items-per-page  = "paginationController.Options.numberOfRowsPerPage" 
+                ng-model        = "paginationController.Options.currentPageNumber"
+                ng-change       = "paginationController.Options.changeMethod()">
+    </pagination> 
+</div>

@@ -1,0 +1,88 @@
+﻿<h3>Products...</h3>
+
+<div id="formDiv" 
+     ng-controller="productController as productController" 
+     ng-init="productController.resetView()">
+
+    <div id="dataFormDiv">
+        <form id="dataForm" 
+              ng-submit="productController.saveProduct( productController.product )">
+
+            <notify-control></notify-control>  
+
+            <br>
+            <label>Name</label>
+            <input type="text" id="productyName" class="form-control" style="width:500px"
+                   ng-model="productController.product.Name" ng-maxlength=50 />  
+
+            <label>Code</label>
+            <input type="text" id="productCode" class="form-control" style="width:200px"
+                   ng-model="productController.product.Code" ng-maxlength=20 />  
+            <br>
+            
+            <label>Category </label>
+            <!--<br>
+            <label>Product {{productController.product}}</label>
+            <br>
+            <label>Category {{productController.product.Category}}</label>
+            <br>-->
+            <select id="categorySelect"  name="categorySelect" class="form-control" style="width:500px"
+                    ng-model   ="productController.product.CategoryId" 
+                    ng-options ="category.Id as category.Name for category in productController.categoryList"> 
+                    <!--ng-options ="category.Id as category.Name for category in productController.categoryList">--> 
+            </select>
+            <br>
+
+            <label> 
+                <input type="checkbox" ng-model="productController.product.Active"/> Active  
+            </label>
+
+            <br>
+            <br>
+            
+            <button type="submit" id="submitButton" class="btn btn-primary btn-small">
+                <span class="glyphicon glyphicon-send"></span> Submit
+            </button>
+
+            <button type="button" id="clearButton" class="btn btn-primary" ng-click="productController.resetView();">
+                <span class="glyphicon glyphicon-minus-sign"></span> Cancel
+            </button>
+            
+            <alert-control></alert-control> 
+
+        </form>
+    </div>
+
+    <div id="listFormDiv">
+        <table id="productListTable" class="bordered" style="width:500px">
+            <thead>
+                <tr>
+                    <th> <a href="#" ng-click="orderColumn='Name'; orderDirection=!orderDirection"> Name </a> </th>
+                    <th> <a href="#" ng-click="orderColumn='Name'; orderDirection=!orderDirection"> Code </a> </th>  
+                    <th> Category  </th>
+                    <th> Active  </th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+            <tr ng-repeat="actualProduct in productController.productList | orderBy:orderColumn:orderDirection">
+                <td> {{actualProduct.Name}}       </td>
+                <td> {{actualProduct.Code}}       </td>
+                <td> {{actualProduct.Category.Name}} </td>
+                <td> {{actualProduct.Active==true ? "Yes" : "No" }}   </td>
+                <td>
+                    <button type="button" id="editButton" class="btn btn-success btn-small"
+                            ng-click="productController.getProduct( actualProduct.Id )">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                    <button type="button" id="deleteButton" class="btn btn-danger btn-small"
+                            ng-click="productController.confirmDelete( actualProduct )">
+                        <span class="glyphicon glyphicon-minus-sign"></span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+
+        <pagination-control></pagination-control>  
+    </div> 
+            
+</div> 

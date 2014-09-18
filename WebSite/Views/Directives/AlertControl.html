@@ -1,0 +1,13 @@
+﻿<div id="alertDiv" style="width: 500px; margin-top: 20px; margin-bottom: 20px;"
+     ng-controller="dialogController as dialogController"
+     ng-init="dialogController.closeAlertWindow()"
+     ng-show="dialogController.alertMessages.length > 0 ">
+
+    <alert type="danger" close="dialogController.closeAlertWindow()">
+        <div id="alertMessages"
+             ng-repeat="actualMessage in dialogController.alertMessages">
+            {{actualMessage}}
+        </div>
+    </alert>
+
+</div>

@@ -1,0 +1,73 @@
+﻿<h3>Categories...</h3>
+ 
+<div id="formDiv" 
+     ng-controller="categoryController as categoryController" 
+     ng-init="categoryController.resetView()">
+
+    <div id="dataFormDiv">
+        <form id="dataForm" 
+              ng-submit="categoryController.saveCategory( categoryController.category )">
+
+            <notify-control></notify-control>  
+
+            <br>
+            <label>Name</label>
+            <input type="text" id="categoryName" class="form-control" style="width:500px"
+                   ng-model="categoryController.category.Name" ng-maxlength=50 />  
+
+            <label>Code</label>
+            <input type="text" id="categoryCode" class="form-control" style="width:200px"
+                   ng-model="categoryController.category.Code" ng-maxlength=20 />  
+            <br>
+
+            <label> 
+                <input type="checkbox" ng-model="categoryController.category.Active"/> Active  
+            </label>
+
+            <br>
+            <br>
+            
+            <button type="submit" id="submitButton" class="btn btn-primary btn-small">
+                <span class="glyphicon glyphicon-send"></span> Submit
+            </button>
+
+            <button type="button" id="clearButton" class="btn btn-primary" ng-click="categoryController.resetView();">
+                <span class="glyphicon glyphicon-minus-sign"></span> Cancel
+            </button>
+            
+            <alert-control></alert-control> 
+
+        </form>
+    </div>
+    
+    <div id="listFormDiv">
+        <table id="categoriesListTable" class="bordered" style="width:500px">
+            <thead>
+                <tr>
+                    <th> <a href="#" ng-click="orderColumn='Name'; orderDirection=!orderDirection"> Name </a> </th>
+                    <th> <a href="#" ng-click="orderColumn='Name'; orderDirection=!orderDirection"> Code </a> </th>  
+                    <th> Active  </th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+            <tr ng-repeat="actualCategory in categoryController.categoryList | orderBy:orderColumn:orderDirection">
+                <td> {{actualCategory.Name}}     </td>
+                <td> {{actualCategory.Code}}     </td>
+                <td> {{actualCategory.Active==true ? "Yes" : "No" }}   </td>
+                <td>
+                    <button type="button" id="editButton" class="btn btn-success btn-small"
+                            ng-click="categoryController.getCategory( actualCategory.Id )">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                    <button type="button" id="deleteButton" class="btn btn-danger btn-small"
+                            ng-click="categoryController.confirmDelete( actualCategory )">
+                        <span class="glyphicon glyphicon-minus-sign"></span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+
+        <pagination-control></pagination-control>  
+    </div> 
+
+</div> 
