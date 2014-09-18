@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+
+
+<link href="Content/Site.css" rel="stylesheet" />
+<link href="Content/bootstrap-3.1.1/css/bootstrap.min.css" rel="stylesheet" />
+<link href="Content/toaster.css" rel="stylesheet" />
+ 
+<script src="Scripts/angular.min.js"></script>
+<script src="Scripts/angular-route.min.js"></script>
+<script src="Scripts/angular-resource.min.js"></script>
+<script src="Scripts/angular-cookies.min.js"></script>
+<script src="Scripts/angular-animate.min.js"></script>
+
+<script src="Scripts/ui-bootstrap-0.11.0.min.js"></script>
+<script src="Scripts/ui-bootstrap-tpls-0.11.0.min.js"></script> 
+<script src="Scripts/toaster.js"></script>
+
+<script src="Controllers/Application.js"></script>
+<script src="Controllers/Category.js"></script>
+<script src="Controllers/Product.js"></script>
+
+<script src="Services/ApplicationStart.js"></script>
+<script src="Services/RequestInterceptor.js"></script>
+<script src="Services/Dialogs.js"></script>
+<script src="Services/Pagination.js"></script>
+
+<script src="Repositories/CategoryRepository.js"></script>
+<script src="Repositories/ProductRepository.js"></script>
+
+<html ng-app="application">
+    <head>
+        <title>Alderam Framework 1.00.00</title>
+    </head>
+
+    <body ng-controller="menuController as menuController">
+        <div id="menu" class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">
+                    <a href="/">Alderam Framework 1.00.00</a>
+                </p>
+            </div>
+            <div class="float-right">
+                <nav>
+                    <ul id="menu">
+                        <li><a href="/" class="a"   ng-click="menuController.setActiveView('Home')">Home</a></li>
+                        <li><a href="/Categories"   ng-click="menuController.setActiveView('Categories')">Categories</a></li>
+                        <li><a href="/Products"     ng-click="menuController.setActiveView('Products')">Products</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div id="body">
+            <section id="sectionWelcome" class="featured">
+                <div class="content-wrapper">
+                    <hgroup class="title">
+                        <h1>Welcome to Friend's AngularJS REST client!</h1>
+                    </hgroup>
+                    <p>
+                        This is a sample of a AngularJS REST client
+                    </p>
+                </div>
+            </section>
+
+            <!--
+            <section id="sectionServerAddress" class="content-wrapper main-content clear-fix">
+                <ol class="round"></ol>
+                <h3>Server adress</h3>
+                <ul>
+                    <li style="list-style-type:none">
+                        <input id="serverHostAddress" value="http://localhost:24322/">
+                    </li>
+                </ul>
+            </section>
+            -->
+
+            <section id="sectionForms" class="content-wrapper">
+                
+                <!--<div ng-controller="serviceController as serviceController">
+                    {{serviceController.text}}
+                    
+                        
+                    <div ng-controller="viewController as viewController">
+                        {{viewController.text}} 
+                        <br>
+                        <button>click</button>
+                    </div>
+
+                </div>-->
+
+
+                <!-- For injection using routing -->
+                <div id="main">
+                    <ng-view></ng-view>
+                </div>
+                <!-- For injection using attributes 
+                <categories-form ng-show="menuController.isActiveView('Categories')"></categories-form>
+                <products-form ng-show="menuController.isActiveView('Products')"></products-form>
+                -->
+            </section>
+        </div>
+    </body>
+</html>

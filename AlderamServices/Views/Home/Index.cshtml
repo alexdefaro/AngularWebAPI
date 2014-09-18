@@ -1,0 +1,172 @@
+﻿<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Welcome to Friend's ASP.NET Web API Server</h1>
+            </hgroup>
+            <p>
+                This is a sample of a ASP.NET REST Web API Server
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <ol class="round"></ol>
+        <h3>Routes...</h3>
+        <ul>
+            <li> <a href="#" onclick="authorizeUser('alex', 'alexpassword')"> Login to API using Credentials </a></li>
+            <li> <a href="#" onclick="authorizeToken('alexalexpassword')"> Login to API using Token </a></li>
+            <li> <a href="#" onclick="authentitate()"> Configure authentication</a></li>
+
+            <li> <a href="#" onclick="getAllCategories()"> All categories (/api/categories) </a></li>
+            <li> <a href="#" onclick="getAllProducts()">   All products (/api/products) </a></li> 
+            <li> <a href="#" onclick="getCategory(1)">   Category 1 (/api/categories/1) </a></li> 
+            <li> <a href="#" onclick="getProduct(1)">  Product 1 (/api/products/1) </a></li>
+            <li> <a href="#" onclick="getCategoryProducts(1)">All products from category 1 (/api/categories/1/products) </a></li>
+        </ul>
+    </section >
+    <section class="content-wrapper">
+        <h3>Results...</h3>
+        <ul>
+            <li style="list-style-type:none">
+                <div id="divResult">
+
+                </div>
+            </li>
+        </ul>
+    </section >
+</div>
+
+
+<script src="~/Scripts/Crypto/rollups/aes.js"></script> 
+
+<script type="text/javascript">
+    
+    function setRequestConfiguration( autenthicationType ) {
+        
+        if ( autenthicationType == "T" ) {
+
+            var credentialsToken = "alexalexpassword";   
+
+            $.ajaxSetup({
+                headers : {
+                    "Authorization" : "Token " + credentialsToken
+                }
+            });
+        }
+        else {
+
+            var credentialsInUTF8 = CryptoJS.enc.Utf8.parse( "alex" + ":" + "alexpassword"); 
+            var credentialsInBase64 = CryptoJS.enc.Base64.stringify( credentialsInUTF8 );
+
+            $.ajaxSetup({
+                headers : {
+                    "Authorization" : "Credentials " + credentialsInBase64
+                }
+            });
+        }
+    }
+     
+    function authorizeUser( userName, userPassword ) { 
+        var ajaxRequest = $.post( "api/AuthenticateUser", { UserName     : userName, 
+                                                            UserPassword : userPassword } );
+ 
+        ajaxRequest.done(function( responseData, status, jqXHR ) {   
+            $("#divResult").html( jqXHR.responseText );
+          })
+ 
+        ajaxRequest.fail(function( jqXHR, textStatus, errorThrown  ) {
+            $("#divResult").html( errorThrown );
+          }) 
+    }
+
+    function authorizeToken( tokenString ) { 
+        var ajaxRequest = $.post( "api/AuthenticateToken", { Token : tokenString } );
+ 
+        ajaxRequest.done(function( responseData, status, jqXHR ) {   
+            $("#divResult").html( jqXHR.responseText );
+          })
+ 
+        ajaxRequest.fail(function( jqXHR, textStatus, errorThrown  ) {
+            $("#divResult").html( errorThrown );
+          }) 
+    }
+    
+    
+    function authentitate() {
+        setRequestConfiguration('T'); 
+    }
+    
+    function getAllCategories() {
+        
+        var ajaxRequest = $.getJSON( "api/categories" );
+
+        ajaxRequest.done(function( responseData, status, jqXHR ) {  
+
+            $("#divResult").html( jqXHR.responseText );
+          })
+ 
+        ajaxRequest.fail(function( jqXHR, textStatus, errorThrown  ) {
+            $("#divResult").html( textStatus );
+          }) 
+    }
+
+    function getCategory( categoryId ) { 
+         
+        var ajaxRequest = $.getJSON( "api/categories/" + categoryId.toString() );
+
+        ajaxRequest.done(function( responseData, status, jqXHR ) {  
+
+            $("#divResult").html( jqXHR.responseText );
+          })
+ 
+        ajaxRequest.fail(function( jqXHR, textStatus, errorThrown  ) {
+            $("#divResult").html( textStatus );
+          }) 
+    }
+
+    function getCategoryProducts( categoryId ) { 
+
+        var ajaxRequest = $.getJSON( "api/categories/" + categoryId.toString() + "/products" );
+
+        ajaxRequest.done(function( responseData, status, jqXHR ) {  
+
+            $("#divResult").html( jqXHR.responseText );
+          })
+ 
+        ajaxRequest.fail(function( jqXHR, textStatus, errorThrown  ) {
+            $("#divResult").html( textStatus );
+          }) 
+    }
+
+    function getAllProducts() {
+        
+        var ajaxRequest = $.getJSON( "api/products" );
+
+        ajaxRequest.done(function( responseData, status, jqXHR ) { 
+
+            $("#divResult").html( jqXHR.responseText );
+          })
+ 
+        ajaxRequest.fail(function( jqXHR, textStatus, errorThrown  ) {
+            $("#divResult").html( textStatus );
+          }) 
+    }
+
+    function getProduct( productId ) {
+         
+        var ajaxRequest = $.getJSON( "api/products/" + productId.toString() );
+
+        ajaxRequest.done(function( responseData, status, jqXHR ) {  
+
+            $("#divResult").html( jqXHR.responseText );
+          })
+ 
+        ajaxRequest.fail(function( jqXHR, textStatus, errorThrown  ) {
+            $("#divResult").html( textStatus );
+          }) 
+    } 
+
+    $( document ).ready(function() {
+    });
+     
+</script>
